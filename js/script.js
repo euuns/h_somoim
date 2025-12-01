@@ -42,6 +42,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // 글래스 오브젝트 랜덤 움직임 효과
+    const glassShapes = document.querySelectorAll('.glass-shape');
+    glassShapes.forEach((shape, index) => {
+        setInterval(() => {
+            const randomX = Math.random() * 20 - 10;
+            const randomY = Math.random() * 20 - 10;
+            const currentTransform = window.getComputedStyle(shape).transform;
+            shape.style.transform = `${currentTransform} translate(${randomX}px, ${randomY}px)`;
+        }, 3000 + index * 1000);
+    });
+
     // 페이지 로드 시 환영 메시지
     console.log('🎉 연말 모임 페이지에 오신 것을 환영합니다! 🎄');
 });
