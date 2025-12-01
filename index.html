@@ -6,135 +6,519 @@
     <title>연말 모임 안내</title>
 
     <!-- Bootstrap CSS -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Pretendard -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
 
-    <!-- Font 적용 -->
-
     <style>
-		@font-face {
-			font-family: 'JoyfulStory';
-			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/OTEnjoystoriesBA.woff') format('woff');
-			font-weight: normal;
-			font-display: swap;
-		}
-		@font-face {
-			font-family: 'YeogiOttaeJalnan';
-			src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
-			font-weight: normal;
-			font-display: swap;
-		}
+        @font-face {
+            font-family: 'JoyfulStory';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/OTEnjoystoriesBA.woff') format('woff');
+            font-weight: normal;
+            font-display: swap;
+        }
+        @font-face {
+            font-family: 'YeogiOttaeJalnan';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.2/JalnanOTF00.woff') format('woff');
+            font-weight: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
         body {
             font-family: "Pretendard", "KoPubDotum", "KoPub Dotum", sans-serif;
-			background-color: #2f4858 !important;
+            background: linear-gradient(135deg, #fff5f0 0%, #ffe8d6 50%, #ffd4b3 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
         }
 
-		.title-text{
-			font-family: 'JoyfulStory' !important;
-			font-size: 200%;
-		}
+        /* 배경 패턴 효과 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                url('https://www.transparenttextures.com/patterns/45-degree-fabric-light.png'),
+                radial-gradient(circle at 20% 30%, rgba(255, 107, 53, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255, 159, 90, 0.12) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.6;
+        }
 
-		.sub-text{
-			font-family: 'YeogiOttaeJalnan' !important;
-			color: #f8711b;
-			font-size: 130%;
-			text-shadow:
-				-1px -1px 0 #FFF,
-				1px -1px 0 #FFF,
-				-1px 1px 0 #FFF,
-				1px 1px 0 #FFF;
-		}
+        /* 눈송이 애니메이션 */
+        body::after {
+            content: '❄️ ⛄ 🎄 ⭐ 🎅 🎁';
+            position: fixed;
+            top: -50px;
+            left: 0;
+            width: 100%;
+            font-size: 2rem;
+            letter-spacing: 3rem;
+            animation: snowfall 20s linear infinite;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.3;
+        }
 
-		.dashed-line {
-            border-top: 1px dashed #fff;
-            width: 80%;
-            margin: 0 auto;
+        @keyframes snowfall {
+            0% {
+                transform: translateY(-50px);
+            }
+            100% {
+                transform: translateY(100vh);
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 헤더 스타일 */
+        .header-section {
+            background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,245,235,0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            padding: 3rem 2rem;
+            margin: 2rem auto;
+            box-shadow: 0 10px 40px rgba(255, 107, 53, 0.15);
+            border: 2px solid rgba(255, 159, 90, 0.3);
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        .greeting-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 4px rgba(255, 107, 53, 0.1);
+        }
+
+        .description-text {
+            color: #5a4a42;
+            line-height: 1.8;
+            font-size: 0.95rem;
+        }
+
+        /* 정보 카드 */
+        .info-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fff9f5 100%);
+            border-radius: 25px;
+            padding: 2.5rem 2rem;
+            margin: 2rem auto;
+            box-shadow: 0 10px 40px rgba(255, 107, 53, 0.15);
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid rgba(255, 159, 90, 0.2);
+        }
+
+        .info-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b35, #ff9f5a, #ffd700);
+        }
+
+        .info-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #ff6b35;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .info-row:last-child {
+            border-bottom: none;
+        }
+
+        .info-label {
+            flex: 0 0 100px;
+            font-weight: 600;
+            color: #f8711b;
+            font-size: 1.1rem;
+        }
+
+        .info-value {
+            flex: 1;
+            color: #5a4a42;
+            font-weight: 500;
+        }
+
+        .location-detail {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-top: 0.3rem;
+        }
+
+        /* 구분선 */
+        .divider {
+            width: 60%;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.4), rgba(255, 159, 90, 0.4), transparent);
+            margin: 3rem auto;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* 섹션 타이틀 */
+        .section-title {
+            font-family: 'JoyfulStory' !important;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #ff6b35;
+            text-align: center;
+            margin: 2rem 0;
+            text-shadow: 2px 2px 4px rgba(255, 107, 53, 0.2);
+            animation: fadeIn 0.8s ease-out 0.4s both;
+        }
+
+        /* 게임 카드 */
+        .game-card {
+            margin: 2rem 0;
+            animation: fadeInUp 0.6s ease-out both;
+        }
+
+        .game-card:nth-child(1) { animation-delay: 0.5s; }
+        .game-card:nth-child(2) { animation-delay: 0.6s; }
+        .game-card:nth-child(3) { animation-delay: 0.7s; }
+        .game-card:nth-child(4) { animation-delay: 0.8s; }
+
+        .game-number {
+            font-family: 'YeogiOttaeJalnan' !important;
+            color: #f8711b;
+            font-size: 1.5rem;
+            text-shadow:
+                -1.5px -1.5px 0 #FFF,
+                1.5px -1.5px 0 #FFF,
+                -1.5px 1.5px 0 #FFF,
+                1.5px 1.5px 0 #FFF;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        .game-content {
+            background: linear-gradient(135deg, #ffffff 0%, #fff9f5 100%);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(255, 107, 53, 0.12);
+            transition: all 0.3s ease;
+            border-left: 5px solid #ff6b35;
+        }
+
+        .game-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.25);
+            border-left-color: #ff9f5a;
+        }
+
+        .game-description {
+            color: #5a4a42;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .game-rule {
+            padding: 0.5rem 0;
+            color: #6b5b54;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .rule-icon {
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .penalty-text {
+            color: #dc3545;
+            font-weight: 600;
+        }
+
+        .highlight {
+            font-weight: 700;
+            color: #f8711b;
+        }
+
+        /* 애니메이션 */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 0.5;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        /* 반응형 */
+        @media (max-width: 768px) {
+            .header-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .greeting-text {
+                font-size: 1.1rem;
+            }
+
+            .description-text {
+                font-size: 0.9rem;
+            }
+
+            .info-card {
+                padding: 2rem 1.5rem;
+            }
+
+            .info-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .info-label {
+                flex: none;
+            }
+
+            .game-content {
+                padding: 1.5rem;
+            }
+
+            .game-number {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .header-section {
+                padding: 1.5rem 1rem;
+                margin: 1rem auto;
+            }
+
+            .info-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .game-content {
+                padding: 1.2rem;
+            }
         }
     </style>
-	
 </head>
 <body>
 
-    <div class="container mt-5">
-		<div class='text-center align-middle p-3 text-white mt-5'>
-			<span class='fw-bolder'>사랑하는 우리 소모임 여러분,</span><br>
-			<br>
-			<small>이번 시즌에도 변함없이 열정적으로 함께해 주신 모든 분께 진심으로 감사드립니다.<br><br>때론 즐겁고 아쉬웠던 순간들을 나누며 더욱 끈끈해진 저희 모임이, 그동안의 수고를 잠시 잊고 재충전할 수 있는 설레는 겨울 여행을 마련했습니다.<br><br><br>따뜻한 공간에서 맛있는 음식과 함께<br> 잊지 못할 추억을 만들고자 합니다.</small>
-		</div>
+    <div class="container py-4">
+        <!-- 헤더 섹션 -->
+        <div class="header-section">
+            <div class="greeting-text">
+                사랑하는 우리 소모임 여러분 ❤️
+            </div>
+            <div class="description-text">
+                이번 시즌에도 변함없이 열정적으로 함께해 주신 모든 분께 진심으로 감사드립니다.
+                <br><br>
+                때론 즐겁고 아쉬웠던 순간들을 나누며 더욱 끈끈해진 저희 모임이, 그동안의 수고를 잠시 잊고 재충전할 수 있는 설레는 겨울 여행을 마련했습니다.
+                <br><br>
+                따뜻한 공간에서 맛있는 음식과 함께 잊지 못할 추억을 만들고자 합니다. ✨
+            </div>
+        </div>
 
-		<div class='text-center bg-white p-3 mt-4' style='border-radius:30px; background-color: white;'>
-			<table class='mx-auto'>
-				<colgroup>
-					<col width='30%'>
-					<col width='*'>
-				</colgroup>
-				<tr>
-					<th class='text-center align-middle p-3' colspan='2'>정보</th>
-				</tr>
-				<tr>
-					<th class='text-center align-middle border-bottom pb-3'>날짜</th>
-					<td class='align-middle text-center border-bottom pb-3'>2025.12.13 - 2025.12.14</td>
-				</tr>
-				<tr>
-					<th class='text-center align-middle pb-4 pt-2'>장소</th>
-					<td class='align-middle text-center pb-4 pt-2'>리케스테이<br><small>(대전 유성구 문화원로 98 4층 401호)</small></td>
-				</tr>
-			</table>
-		</div>
-		
-		<div class="dashed-line my-4 mt-5"></div>
+        <!-- 정보 카드 -->
+        <div class="info-card">
+            <div class="info-title">📅 모임 정보</div>
+            <div class="info-row">
+                <div class="info-label">날짜</div>
+                <div class="info-value">2025.12.13 - 2025.12.14</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">장소</div>
+                <div class="info-value">
+                    <div>리케스테이</div>
+                    <div class="location-detail">대전 유성구 문화원로 98 4층 401호</div>
+                </div>
+            </div>
+        </div>
 
-		<div class='p-3 mt-4'>
-			<div class='text-center text-white title-text'>무엇을 하나요?</div>
+        <!-- 구분선 -->
+        <div class="divider"></div>
 
-			<div class='mt-5'>
-				<span class='sub-text'>1. 응원가 맞추기</span>
-				<div class='p-3 mt-2 bg-white' style='border-radius:30px;'>
-					응원가 <span class='fw-bolder'>1초/3초</span> 듣고 맞추기!<br>
-					9구단 선수 10개 + 팀 1개의 응원가와 한화 응원가를 준비했습니다.<br>
-					<br>
-					🔸 맞히면 상대가 한 잔, 틀리면 우리가 한 잔<br>
-					🔹 술을 마시고 싶지 않다면, 응원가 떼창<br>
-					🔸 꼴등 팀이 <span class='text-danger'>방 청소</span><br>
-				</div>
-			</div>
+        <!-- 게임 섹션 -->
+        <div class="section-title">무엇을 하나요? 🎮</div>
 
-			<div class='mt-5'>
-				<span class='sub-text'>2. 스피드 퀴즈</span>
-				<div class='p-3 mt-2 bg-white' style='border-radius:30px;'>
-					야구 or 상식 관련하여 <span class='fw-bolder'>퀴즈</span>를 내고 서로 맞추기!<br>
-					<br>
-					🔸 상대 팀에게 낼 문제를 작성<br>
-					🔹 제한 시간 내에 문제 맞추기<br>
-					🔸 꼴등 팀이 <span class='text-danger'>다음날 아침</span> 준비<br>
-				</div>
-			</div>
+        <div class="mt-4">
+            <!-- 게임 1 -->
+            <div class="game-card">
+                <div class="game-number">1. 응원가 맞추기</div>
+                <div class="game-content">
+                    <div class="game-description">
+                        응원가 <span class="highlight">1초/3초</span> 듣고 맞추기!
+                        <br>
+                        9구단 선수 10개 + 팀 1개의 응원가와 한화 응원가를 준비했습니다.
+                    </div>
+                    <div class="game-rule">
+                        <span class="rule-icon">🔸</span>
+                        <span>맞히면 상대가 한 잔, 틀리면 우리가 한 잔</span>
+                    </div>
+                    <div class="game-rule">
+                        <span class="rule-icon">🔹</span>
+                        <span>술을 마시고 싶지 않다면, 응원가 떼창</span>
+                    </div>
+                    <div class="game-rule">
+                        <span class="rule-icon">🔸</span>
+                        <span>꼴등 팀이 <span class="penalty-text">방 청소</span></span>
+                    </div>
+                </div>
+            </div>
 
-			<div class='mt-5'>
-				<span class='sub-text'>3. 야구선수 눈코입 퀴즈</span>
-				<div class='p-3 mt-2 bg-white' style='border-radius:30px;'>
-					<span class='fw-bolder'>눈코입</span>만 보고 <span class='fw-bolder'>누구</span>인지 맞혀보자!<br>
-					<br>
-					🔸 사회자가 지목을 해야 정답 외치기 가능<br>
-					🔹 꼴등 팀이 <span class='text-danger'>잠자리 준비</span><br>
-				</div>
-			</div>
+            <!-- 게임 2 -->
+            <div class="game-card">
+                <div class="game-number">2. 스피드 퀴즈</div>
+                <div class="game-content">
+                    <div class="game-description">
+                        야구 or 상식 관련하여 <span class="highlight">퀴즈</span>를 내고 서로 맞추기!
+                    </div>
+                    <div class="game-rule">
+                        <span class="rule-icon">🔸</span>
+                        <span>상대 팀에게 낼 문제를 작성</span>
+                    </div>
+                    <div class="game-rule">
+                        <span class="rule-icon">🔹</span>
+                        <span>제한 시간 내에 문제 맞추기</span>
+                    </div>
+                    <div class="game-rule">
+                        <span class="rule-icon">🔸</span>
+                        <span>꼴등 팀이 <span class="penalty-text">다음날 아침</span> 준비</span>
+                    </div>
+                </div>
+            </div>
 
-			<div class='mt-5'>
-				<span class='sub-text'>4. 야구 부루마블</span>
-				<div class='p-3 mt-2 bg-white' style='border-radius:30px;'>
-					🔸 꼴등 팀이 <span class='text-danger'>설거지</span><br>
-				</div>
-			</div>
+            <!-- 게임 3 -->
+            <div class="game-card">
+                <div class="game-number">3. 야구선수 눈코입 퀴즈</div>
+                <div class="game-content">
+                    <div class="game-description">
+                        <span class="highlight">눈코입</span>만 보고 <span class="highlight">누구</span>인지 맞혀보자!
+                    </div>
+                    <div class="game-rule">
+                        <span class="rule-icon">🔸</span>
+                        <span>사회자가 지목을 해야 정답 외치기 가능</span>
+                    </div>
+                    <div class="game-rule">
+                        <span class="rule-icon">🔹</span>
+                        <span>꼴등 팀이 <span class="penalty-text">잠자리 준비</span></span>
+                    </div>
+                </div>
+            </div>
 
-		</div>
+            <!-- 게임 4 -->
+            <div class="game-card">
+                <div class="game-number">4. 야구 부루마블</div>
+                <div class="game-content">
+                    <div class="game-rule">
+                        <span class="rule-icon">🔸</span>
+                        <span>꼴등 팀이 <span class="penalty-text">설거지</span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="height: 3rem;"></div>
     </div>
 
     <!-- Bootstrap JS -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // 스크롤 애니메이션 효과
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.game-card').forEach(card => {
+            observer.observe(card);
+        });
+
+        // 부드러운 스크롤
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
 
 </body>
 </html>
