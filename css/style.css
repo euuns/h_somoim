@@ -254,66 +254,80 @@ body {
 .info-box {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0;
+    align-items: stretch;
+    gap: 1.5rem;
     margin-bottom: 3rem;
     background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 100%);
-    padding: 2rem 3rem;
-    border-radius: 25px;
+    padding: 2.5rem 3rem;
+    border-radius: 30px;
     backdrop-filter: blur(10px);
-    box-shadow: 0 8px 25px rgba(66, 165, 245, 0.25);
+    box-shadow: 0 10px 35px rgba(66, 165, 245, 0.3);
     transition: all 0.3s ease;
-    border: 2px solid rgba(100, 181, 246, 0.3);
-    max-width: 700px;
+    border: 3px solid rgba(100, 181, 246, 0.4);
+    max-width: 650px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .info-box:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 35px rgba(66, 165, 245, 0.35);
-    border-color: rgba(66, 165, 245, 0.5);
+    transform: translateY(-5px);
+    box-shadow: 0 15px 45px rgba(66, 165, 245, 0.4);
+    border-color: rgba(66, 165, 245, 0.6);
 }
 
 .info-item {
     display: flex;
     align-items: center;
-    gap: 1rem;
-    width: 100%;
-    padding: 0.8rem 0;
+    gap: 1.5rem;
+    padding: 1.2rem 1.5rem;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.info-item:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateX(5px);
 }
 
 .info-divider {
     width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(100, 181, 246, 0.3), transparent);
-    margin: 0.5rem 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(100, 181, 246, 0.4), transparent);
+    margin: 0;
 }
 
 .info-icon {
-    font-size: 2rem;
+    font-size: 2.5rem;
     flex-shrink: 0;
-    filter: drop-shadow(0 2px 4px rgba(66, 165, 245, 0.3));
+    filter: drop-shadow(0 2px 6px rgba(66, 165, 245, 0.4));
 }
 
 .info-label {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: #1976d2;
-    font-weight: 700;
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     flex-shrink: 0;
-    min-width: 60px;
+    min-width: 70px;
 }
 
 .info-text {
-    font-size: 1.1rem;
-    color: #1565c0;
+    font-size: 1.25rem;
+    color: #0d47a1;
     font-weight: 700;
     flex: 1;
+    line-height: 1.6;
 }
 
-.join-button {
+.join-button,
+a.join-button,
+a.join-button:link,
+a.join-button:visited,
+a.join-button:hover,
+a.join-button:active,
+a.join-button:focus {
     display: inline-flex;
     align-items: center;
     gap: 1rem;
@@ -329,16 +343,6 @@ body {
     position: relative;
     overflow: hidden;
     border: none;
-    outline: none;
-}
-
-.join-button:focus,
-.join-button:hover,
-.join-button:active,
-.join-button:visited,
-.join-button:link {
-    text-decoration: none !important;
-    color: white !important;
     outline: none;
 }
 
@@ -360,11 +364,9 @@ body {
     height: 400px;
 }
 
-.join-button:hover {
+a.join-button:hover {
     transform: translateY(-3px);
     box-shadow: 0 15px 40px rgba(66, 165, 245, 0.5);
-    color: white !important;
-    text-decoration: none !important;
 }
 
 .button-icon {
@@ -463,27 +465,33 @@ body {
     }
 
     .info-box {
-        padding: 1.5rem 2rem;
+        padding: 2rem 1.5rem;
         max-width: 100%;
     }
 
     .info-item {
-        flex-wrap: wrap;
-        justify-content: center;
+        flex-direction: column;
+        align-items: center;
         text-align: center;
-        gap: 0.5rem;
+        gap: 0.8rem;
+        padding: 1rem;
     }
 
     .info-label {
         min-width: auto;
+        font-size: 1rem;
     }
 
     .info-text {
-        font-size: 1rem;
-        flex-basis: 100%;
+        font-size: 1.1rem;
     }
 
-    .join-button {
+    .info-divider {
+        margin: 0.5rem 0;
+    }
+
+    .join-button,
+    a.join-button {
         font-size: 1.1rem;
         padding: 1rem 2rem;
     }
@@ -526,26 +534,28 @@ body {
     }
 
     .info-box {
-        padding: 1.2rem 1.5rem;
+        padding: 1.5rem 1.2rem;
     }
 
     .info-item {
-        padding: 0.5rem 0;
+        padding: 0.8rem;
+        gap: 0.6rem;
     }
 
     .info-icon {
-        font-size: 1.5rem;
+        font-size: 2rem;
     }
 
     .info-label {
-        font-size: 0.85rem;
-    }
-
-    .info-text {
         font-size: 0.9rem;
     }
 
-    .join-button {
+    .info-text {
+        font-size: 1rem;
+    }
+
+    .join-button,
+    a.join-button {
         font-size: 1rem;
         padding: 0.9rem 1.8rem;
         gap: 0.8rem;
